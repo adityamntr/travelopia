@@ -20,6 +20,8 @@ public class Client {
 
     private int travellerCount;
 
+    private int budget;
+
     public Long getId() {
         return id;
     }
@@ -58,6 +60,14 @@ public class Client {
 
     public void setTravellerCount(int travellerCount) {
         this.travellerCount = travellerCount;
+    }
+
+    public int getBudget() {
+        return budget;
+    }
+
+    public void setBudget(int budget) {
+        this.budget = budget;
     }
 
     // getter, setters, contructors
