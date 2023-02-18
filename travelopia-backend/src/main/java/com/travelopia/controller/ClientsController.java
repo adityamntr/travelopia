@@ -20,12 +20,12 @@ public class ClientsController {
         this.clientRepository = clientRepository;
     }
 
-    @GetMapping()
+    @GetMapping("/view")
     public List<Client> getClients() {
         return clientRepository.findAll();
     }
 
-    @PostMapping("/clients/add")
+    @PostMapping("/add")
     public ResponseEntity createClient(@RequestBody Client client) throws URISyntaxException {
         Client savedClient = clientRepository.save(client);
         return ResponseEntity.created(new URI("/clients/add/" + savedClient.getId())).body(savedClient);
