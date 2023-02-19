@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button, ButtonGroup, Container, Table } from 'reactstrap';
 import AppNavigation from './AppNavigation';
 import { Link } from 'react-router-dom';
+import background from "./img/tp.png";
 
 class ClientList extends Component {
 
@@ -31,17 +32,18 @@ class ClientList extends Component {
 
         return (
             <div>
-                <AppNavigation/>
+                 <div class="tp">
+                            <Button tag={Link} to="/" style={{backgroundImage: `url(${background})`,backgroundSize:"cover", width:"140px", height:"40px"}}></Button>
+                            </div>
                 <Container fluid>
-                    <h3>Clients</h3>
                     <Table className="mt-4">
                         <thead>
                         <tr>
-                            <th width="30%">Name</th>
-                            <th width="30%">Email</th>
-                            <th width="40%">Destination</th>
-                            <th width="40%">Traveller Count</th>
-                            <th width="40%">Budget</th>
+                            <th width="20%">Name</th>
+                            <th width="20%">Email</th>
+                            <th width="20%">Destination</th>
+                            <th width="20%">Traveller Count</th>
+                            <th width="20%">Budget (USD)</th>
                         </tr>
                         </thead>
                         <tbody>

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { Button, Container, Form, FormText, FormGroup, Input, Label } from 'reactstrap';
 import AppNavigation from './AppNavigation';
+import background from "./img/tp.png";
+import background1 from "./img/slider1.jpg";
 
 class ClientAdd extends Component {
 
@@ -31,9 +33,17 @@ class ClientAdd extends Component {
         this.setState({item});
     }
 
+      handleCloseDialog() {
+        this.setState({
+
+        });
+      }
+
 async handleSubmit(event) {
+    alert('Successfully submitted');
     event.preventDefault();
     const {item} = this.state;
+    this.setState("")
 
 await fetch('/clients/add', {
         method: 'POST',
@@ -48,13 +58,18 @@ await fetch('/clients/add', {
 
     render() {
         const {item} = this.state;
-        const title = <h2>{'Add Client'}</h2>;
+        const title = <h2 id="add">{'Add Client'}</h2>;
 
         return <div>
-            <AppNavigation/>
-            <Container>
-                {title}
-                <Form onSubmit={this.handleSubmit}>
+             <div style={{ backgroundImage: `url(${background1})` , height: "830px", "background-position": "center"}}>
+            <FormGroup>
+            <div class="tp">
+            <Button tag={Link} to="/" style={{backgroundImage: `url(${background})`,backgroundSize:"cover", width:"140px", height:"40px"}}></Button>
+            </div>
+            </FormGroup>
+            <div class="form">
+            <Container >
+                <Form id="mainInput" onSubmit={this.handleSubmit}>
                     <FormGroup>
                         <Label for="name">Name</Label>
                         <Input type="text" name="name" id="name" value={item.name || ''}
@@ -73,9 +88,6 @@ await fetch('/clients/add', {
                                 <option>Africa</option>
                                 <option>Europe</option>
                               </Input>
-                               <FormText color="muted">
-                                          Select A Destination From Dropdown
-                                          </FormText>
                             </FormGroup>
                     <FormGroup>
                      <Label for="travellerCount">Number of Travellers</Label>
@@ -87,12 +99,16 @@ await fetch('/clients/add', {
                      <Input type="text" name="budget" id="budget" value={item.budget || ''}
                                       onChange={this.handleChange} autoComplete="budget"/>
                      </FormGroup>
+                     <div class="submit">
                     <FormGroup>
-                        <Button color="primary" type="submit">Save</Button>{' '}
-                        <Button color="secondary" tag={Link} to="/clients/view">Cancel</Button>
+                        <Button color="primary" type="submit" to="/clients/view">Save</Button>{' '}
+                        <Button color="secondary" tag={Link} to="/">Cancel</Button>
                     </FormGroup>
+                    </div>
                 </Form>
             </Container>
+            </div>
+            </div>
         </div>
     }
 }
