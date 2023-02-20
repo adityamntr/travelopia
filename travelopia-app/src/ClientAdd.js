@@ -40,10 +40,9 @@ class ClientAdd extends Component {
       }
 
 async handleSubmit(event) {
-    alert('Successfully submitted');
     event.preventDefault();
     const {item} = this.state;
-    this.setState("")
+    alert('Successfully submitted');
 
 await fetch('/clients/add', {
         method: 'POST',
